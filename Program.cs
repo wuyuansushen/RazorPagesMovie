@@ -12,8 +12,11 @@ namespace RazorPagesMovie
         public static void Main(string[] args)
         {
             var host = CreateHostBuilder(args).Build();
+
+            //Add a scope service
             using (var scope = host.Services.CreateScope())
             {
+                //Get scope service provider
                 var services = scope.ServiceProvider;
 
                 try
@@ -30,8 +33,7 @@ namespace RazorPagesMovie
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+            Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });
